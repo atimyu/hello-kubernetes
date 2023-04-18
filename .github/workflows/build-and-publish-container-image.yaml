@@ -1,12 +1,6 @@
 name: "When push to main, build and publish a new version of the container image"
   
 on:
-  workflow_call:
-    secrets:
-      DOCKERHUB_USERNAME:
-        required: true
-      DOCKERHUB_TOKEN:
-        required: true
   push:
     branches: main
 
@@ -16,8 +10,6 @@ jobs:
     env:
       CONTAINER_REGISTRY: docker.io
       CONTAINER_IMAGE: atimyu/hello-kubernetes
-      USER: ${{ secrets.DOCKERHUB_USERNAME }}
-      TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
 
     steps:
       - name: Checkout code
@@ -47,6 +39,8 @@ jobs:
           docker tag $IMAGE:$IMAGE_VERSION $IMAGE:$IMAGE_MAJOR_VERSION.$IMAGE_MINOR_VERSION
         
       - name: Print DOCKERHUB_USERNAME
+        env:
+          USER: ${{ secrets.DOCKERHUB_USERNAME }}
         if: env.USER == 'atimyu'
         run: echo "OK"
       
