@@ -47,7 +47,7 @@ jobs:
           docker tag $IMAGE:$IMAGE_VERSION $IMAGE:$IMAGE_MAJOR_VERSION.$IMAGE_MINOR_VERSION
         
       - name: Print DOCKERHUB_USERNAME
-        if: env.USER == "atimyu"
+        if: env.USER == 'atimyu'
         run: echo "OK"
       
       - name: Login to Docker Hub
