@@ -1,4 +1,4 @@
-name: "When a release tag is created, build and publish a new version of the container image"
+name: "When push to main, build and publish a new version of the container image"
 
 on:
   push:
