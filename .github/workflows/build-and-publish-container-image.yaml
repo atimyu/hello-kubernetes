@@ -3,6 +3,7 @@ name: "When push to main, build and publish a new version of the container image
 on:
   push:
     branches: ["main"]
+    
 
 jobs:
   build-and-push-container-image:
